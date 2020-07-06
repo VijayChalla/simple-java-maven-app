@@ -14,7 +14,8 @@ pipeline {
         }
     stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn -B test'
+                echo "Test successful"
             }
             post {
                 always {
@@ -22,6 +23,8 @@ pipeline {
                 }
             }
         }
+    stage('Deploy to artifactory')
+        
     stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
