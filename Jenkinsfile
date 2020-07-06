@@ -23,6 +23,9 @@ pipeline {
                 }
             }
         }      
+    stage('Artifactory'){
+        sh "curl -X PUT -u admin:admin123 -T /var/jenkins_home/workspace/Newdeployment/target/my-app-V1.${BUILD_NUMBER}.jar 'http://18.218.59.72:8082/artifactory/EY/my-app-V1.${BUILD_NUMBER}.jar'
+    }       
     stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
