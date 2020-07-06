@@ -22,9 +22,7 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
-    stage('Deploy to artifactory')
-        
+        }      
     stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
