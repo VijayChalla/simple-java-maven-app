@@ -22,12 +22,7 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }      
-    stage('Artifactory'){
-        steps {
-              sh "curl -X PUT -u admin:admin123 -T /var/jenkins_home/workspace/Newdeployment/target/my-app-v1.${BUILD_NUMBER}.jar http://18.218.59.72:8082/artifactory/EY/my-app-v1.${BUILD_NUMBER}.jar'"
-        }
-    }      
+        }       
     stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
